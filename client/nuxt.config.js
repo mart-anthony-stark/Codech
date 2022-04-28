@@ -8,7 +8,13 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,900&display=swap",
+      },
+    ],
   },
 
   ssr: false,
@@ -59,6 +65,6 @@ export default {
   build: {},
 
   env: {
-    API_URL: "asd",
+    API_URL: "http://localhost:8080",
   },
 };
