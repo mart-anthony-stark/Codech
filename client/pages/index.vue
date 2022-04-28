@@ -11,3 +11,9 @@ const handleAdd = () => {
   count.value += 5;
 };
 </script>
+
+<style lang="scss" scoped>
+div {
+  background: $primary;
+}
+</style>
