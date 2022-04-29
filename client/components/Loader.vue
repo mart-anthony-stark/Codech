@@ -16,6 +16,10 @@
 <style lang="scss" scoped>
 .loader {
   @include center();
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
   width: 100%;
 
   svg {
