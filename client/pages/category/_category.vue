@@ -1,8 +1,8 @@
 <template>
   <section>
-    <transition name="fade">
+    <!-- <transition name="fade">
       <Loader v-if="loading" />
-    </transition>
+    </transition> -->
     <h1 class="category">Object-Oriented Programming (OOP)</h1>
     <Timer :time="time" :max="max" />
     <div
@@ -22,6 +22,9 @@
           >
             <div class="text">{{ choice.text }}</div>
           </div>
+        </div>
+        <div class="btn">
+          <button class="next">NEXT</button>
         </div>
       </div>
     </div>
@@ -86,6 +89,20 @@ section {
         border: 1px solid $secondary;
         border-radius: 25px;
         cursor: pointer;
+      }
+    }
+    .btn {
+      @include center();
+      padding: 20px;
+
+      button.next {
+        padding: 10px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        background: $secondary;
+        width: 150px;
       }
     }
   }
