@@ -2,6 +2,7 @@
   <div class="progress-bar">
     <div class="text">{{ remainingTime }}</div>
     <div class="fill" :style="{ width: barPercentage + '%' }"></div>
+    <img src="~/assets/svg/timer.svg" alt="" />
   </div>
 </template>
 
@@ -51,6 +52,13 @@ export default {
 
   .text {
     z-index: 1;
+  }
+
+  img {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 10px;
   }
 }
 </style>
