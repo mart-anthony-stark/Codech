@@ -1,10 +1,8 @@
 <template>
-  <section>
-    <div class="progress-bar">
-      <div class="text">{{ remainingTime }}</div>
-      <div class="fill" :style="{ width: barPercentage + '%' }"></div>
-    </div>
-  </section>
+  <div class="progress-bar">
+    <div class="text">{{ remainingTime }}</div>
+    <div class="fill" :style="{ width: barPercentage + '%' }"></div>
+  </div>
 </template>
 
 
