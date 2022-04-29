@@ -7,19 +7,22 @@
 </template>
 
 
-<script lang="ts">
+<script>
 export default {
-  props: ["time", "max"],
+  props: {
+    time: Number,
+    max: Number,
+  },
   computed: {
     remainingTime() {
-      const m = Math.floor((this.$props.time % 3600) / 60).toString();
-      const s = Math.floor(this.$props.time % 60)
+      const m = Math.floor(((this.time) % 3600) / 60).toString();
+      const s = Math.floor((this.time) % 60)
         .toString()
         .padStart(2, "0");
       return `${m}:${s}`;
     },
     barPercentage() {
-      return (parseInt(this.$props.time) / 90) * 100;
+      return ((this.time) / 90) * 100;
     },
   },
   mounted() {},
