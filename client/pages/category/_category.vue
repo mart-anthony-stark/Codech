@@ -1,13 +1,30 @@
 <template>
   <section>
-    <!-- <transition name="fade">
+    <transition name="fade">
       <Loader v-if="loading" />
-    </transition> -->
-    <!-- <div v-for="question in questions" :key="question._id">
-      {{ question.question }}
-    </div> -->
+    </transition>
     <h1 class="category">Object-Oriented Programming (OOP)</h1>
     <Timer :time="time" :max="max" />
+    <div
+      class="question-container"
+      v-for="(question, i) in questions"
+      :key="question._id"
+    >
+      <div v-show="questionIndex == i" class="question-box">
+        <h1 class="question">
+          {{ question.question }}
+        </h1>
+        <div class="choices">
+          <div
+            v-for="choice in question.choices"
+            :key="choice.id"
+            class="choice"
+          >
+            <div class="text">{{ choice.text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -25,6 +42,7 @@ const max = 90;
 const time: Ref<number> = ref(90);
 const { route } = useContext();
 
+const questionIndex: Ref<number> = ref(0);
 const category: Ref<string> = ref("");
 const loading: Ref<boolean> = ref(true);
 
@@ -52,6 +70,24 @@ section {
 
   .category {
     color: #c9c9c9;
+    margin-bottom: 30px;
+  }
+  .question-container {
+    padding: 20px;
+
+    .choices {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      margin-top: 50px;
+
+      .choice {
+        padding: 10px 20px;
+        border: 1px solid $secondary;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
