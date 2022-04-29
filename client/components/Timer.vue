@@ -7,48 +7,27 @@
   </section>
 </template>
 
+
 <script lang="ts">
-import {
-  computed,
-  ComputedRef,
-  onMounted,
-  onUnmounted,
-  ref,
-  Ref,
-} from "@nuxtjs/composition-api";
-
 export default {
-  setup() {
-    const time: Ref<number> = ref(90);
-
-    const remainingTime: ComputedRef<string> = computed((): string => {
-      const m = Math.floor((time.value % 3600) / 60).toString();
-      const s = Math.floor(time.value % 60)
+  props: ["time", "max"],
+  computed: {
+    remainingTime() {
+      const m = Math.floor((this.time % 3600) / 60).toString();
+      const s = Math.floor(this.time % 60)
         .toString()
         .padStart(2, "0");
       return `${m}:${s}`;
-    });
-
-    // Compute progress bar percentage
-    const barPercentage: ComputedRef<number> = computed((): number => {
-      return (time.value / 90) * 100;
-    });
-
-    // Countdown handler for timer
-    let timerInterval: ReturnType<typeof setInterval>;
-    onMounted(() => {
-      timerInterval = setInterval(() => {
-        if (time.value === 0) return clearInterval(timerInterval);
-        time.value--;
-      }, 1000);
-    });
-
-    onUnmounted(() => clearInterval(timerInterval));
-
-    return { remainingTime, barPercentage };
+    },
+    barPercentage() {
+      return (parseInt(this.time) / 90) * 100;
+    },
   },
+  mounted() {},
 };
 </script>
+
+
 
 <style lang="scss" scoped>
 .progress-bar {
