@@ -22,3 +22,13 @@ section {
 .fade-leave-to {
   opacity: 0;
 }
+
+.list-enter-active,
+.list-leave-active {
+  transition: 1s;
+}
+.list-enter,
+.list-leave-to {
+  transform: translateY(50px);
+  position: absolute;
+}
