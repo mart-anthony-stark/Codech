@@ -17,8 +17,8 @@
             <h1>Enhances your skills</h1>
             <p>
               Assessment used to provide an unbiased, validated evaluation of an
-              individual's ability to perform the duties listed in the job
-              description in question based format
+              individual's ability and knowledge in technical concepts in
+              question based format
             </p>
           </div>
           <img src="~/assets/svg/skills.svg" class="graphics" />
