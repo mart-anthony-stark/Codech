@@ -4,11 +4,15 @@
       <h1>Codech</h1>
     </nav>
     <div class="hero">
-      <div class="left">
-        <h1 class="heading">It’s time to “Rethink” technology</h1>
-        <h3>Let's examine your fundamentals in technical concepts</h3>
+      <div class="banner">
+        <div class="left">
+          <h1 class="heading">It’s time to “Rethink” technology</h1>
+          <h3>Let's examine your fundamentals in technical concepts</h3>
+        </div>
+        <img class="graphics" src="~/assets/svg/code_thinking.svg" alt="" />
       </div>
-      <img class="graphics" src="~/assets/svg/code_thinking.svg" alt="" />
+
+      <button @click="start" class="start">Start</button>
     </div>
     <section>
       <div class="left">
@@ -29,7 +33,12 @@
 </template>
 
 <script setup>
-import { ref } from "@nuxtjs/composition-api";
+import { ref, useRouter } from "@nuxtjs/composition-api";
+
+const router = useRouter();
+const start = () => {
+  router.push("/category/asd");
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,22 +57,59 @@ main {
     position: fixed;
     top: 0;
     width: 100%;
-
+    z-index: 99;
+    
     h1 {
       font-size: 2rem;
     }
   }
 
   .hero {
-    @include center();
-    padding: 0 30px;
-    gap: 100px;
     min-height: 100vh;
+    @include center();
+    flex-direction: column;
+    .banner {
+      @include center();
+      padding: 0 30px;
+      gap: 100px;
+    }
 
     .left {
       color: $primary;
       h1 {
         font-size: 2.5rem;
+      }
+    }
+    .start {
+      position: relative;
+      height: 50px;
+      width: 300px;
+      border: none;
+      background: $accent;
+      color: #fff;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:after {
+        border-radius: 5px;
+        content: "";
+        height: 50px;
+        width: 300px;
+        border: none;
+        background: rgb(109, 15, 54);
+        color: #fff;
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 10px;
+      }
+      &:active {
+        transform: translateY(10px);
+      }
+      &:active::after {
+        background: $accent;
       }
     }
   }
