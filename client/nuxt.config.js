@@ -1,11 +1,16 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "client",
+    title: "Codech",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Assessment used to provide an unbiased, validated evaluation of an individual's ability and knowledge in technical concepts in question based format",
+      },
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
