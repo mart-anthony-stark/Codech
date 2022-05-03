@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Role } from 'src/auth/decorator';
+import { JwtGuard, RoleGuard } from 'src/auth/guards';
 import { QuestionDto } from './dto';
 import { QuestionsService } from './questions.service';
 
@@ -12,6 +14,8 @@ export class QuestionsController {
   }
 
   @Post()
+  @Role('admin')
+  @UseGuards(JwtGuard, RoleGuard)
   insertQuestion(@Body() dto: QuestionDto) {
     return this.questionsService.createQuestion(dto);
   }
