@@ -5,7 +5,6 @@ import { IUser } from './interface';
 import { LoginDto, SignupDto } from './dto';
 import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
-import { NotFoundError } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -45,16 +44,23 @@ export class AuthService {
     return this.signToken(user._id, user.email);
   }
 
-  signToken(userId, email: string): { access_token: string } {
+  signToken(
+    userId,
+    email: string,
+  ): { access_token: string; refresh_token: string } {
     const payload = {
       sub: userId,
       email: email,
     };
     const token = this.jwt.sign(payload, {
+      expiresIn: '15m',
+      secret: process.env.ACCESS_SECRET,
+    });
+    const refreshToken = this.jwt.sign(payload, {
       expiresIn: '7d',
-      secret: process.env.JWT_SECRET,
+      secret: process.env.REFRESH_SECRET,
     });
 
-    return { access_token: token };
+    return { access_token: token, refresh_token: refreshToken };
   }
 }
