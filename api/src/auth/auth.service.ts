@@ -44,6 +44,29 @@ export class AuthService {
     return this.signToken(user._id, user.email);
   }
 
+
+  // Generate new access token if valid refresh token is sent in header
+  async getNewAccessToken(headers: Headers) {
+    const bearer =
+      headers['authorization'] && headers['authorization'].split(' ')[1];
+    if (!bearer)
+      throw new HttpException(
+        'Authorization header not found',
+        HttpStatus.NOT_FOUND,
+      );
+    try {
+      const payload = this.jwt.verify(bearer, {
+        secret: process.env.REFRESH_SECRET,
+      });
+      const { access_token } = this.signToken(payload.sub, payload.email);
+      return { access_token };
+    } catch (error) {
+      console.log(error);
+      throw new HttpException('Invalid refresh token', HttpStatus.UNAUTHORIZED);
+    }
+  }
+
+  // Generates access and refresh tokens
   signToken(
     userId,
     email: string,
