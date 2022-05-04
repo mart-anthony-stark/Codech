@@ -44,7 +44,6 @@ export class AuthService {
     return this.signToken(user._id, user.email);
   }
 
-
   // Generate new access token if valid refresh token is sent in header
   async getNewAccessToken(headers: Headers) {
     const bearer =
@@ -61,7 +60,6 @@ export class AuthService {
       const { access_token } = this.signToken(payload.sub, payload.email);
       return { access_token };
     } catch (error) {
-      console.log(error);
       throw new HttpException('Invalid refresh token', HttpStatus.UNAUTHORIZED);
     }
   }
