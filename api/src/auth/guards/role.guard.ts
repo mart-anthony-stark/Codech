@@ -20,8 +20,6 @@ export class RoleGuard implements CanActivate {
       context.getHandler(),
       context.getClass(),
     ]);
-    console.log(requiredRole);
-    console.log(request.user);
     if (request.user.role !== requiredRole)
       throw new HttpException(
         `You must be an ${requiredRole} to access`,
