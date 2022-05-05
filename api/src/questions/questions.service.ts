@@ -33,4 +33,9 @@ export class QuestionsService {
 
     return question;
   }
+
+  async deleteQuestion(id: Types.ObjectId) {
+    const question = await this.questionModel.findByIdAndRemove(id);
+    return question;
+  }
 }
