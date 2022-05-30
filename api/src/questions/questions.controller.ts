@@ -9,9 +9,9 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { Role } from 'src/auth/decorator';
-import { Roles } from 'src/auth/enum';
-import { JwtGuard, RoleGuard } from 'src/auth/guards';
+import { Role } from '../auth/decorator';
+import { Roles } from '../auth/enum';
+import { JwtGuard, RoleGuard } from '../auth/guards';
 import { QuestionDto } from './dto';
 import { QuestionsService } from './questions.service';
 
