@@ -64,6 +64,11 @@ export class AuthService {
     }
   }
 
+  async getAllUsers() {
+    const users = await this.userModel.find();
+    return users;
+  }
+
   // Generates access and refresh tokens
   signToken(
     userId,
