@@ -6,7 +6,7 @@ import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     QuestionsModule,
     AuthModule,
     DatabaseModule,
