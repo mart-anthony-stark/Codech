@@ -28,4 +28,9 @@ export class AuthController {
   getAccessToken(@Headers() headers) {
     return this.authService.getNewAccessToken(headers);
   }
+
+  @Get('users')
+  getAllUsers() {
+    return this.authService.getAllUsers();
+  }
 }
